@@ -8,5 +8,11 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::get('/produto', function (Request $request) {
-    return 'ai cachorra';
+    $dados = [
+        'nome' => 'victor',
+        'idade' => '19'
+    ];
+
+
+    return response()->json($dados);
 });
