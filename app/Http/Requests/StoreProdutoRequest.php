@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class StoreProdutoRequest extends FormRequest
 {
@@ -14,6 +16,19 @@ class StoreProdutoRequest extends FormRequest
         return true;
     }
 
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json(
+            [
+                'status' => false,
+                'messagem' => 'Erro de validação',
+                'erro' => $validator->errors()
+            ],
+            422),
+        );
+    }
+
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,7 +39,7 @@ class StoreProdutoRequest extends FormRequest
         return [
             'nome' => 'required',
             'preco' => 'required|numeric|min:1',
-            'estoque' => 'required|numeric',            
+            'estoque' => 'required|numeric',
         ];
     }
 }
