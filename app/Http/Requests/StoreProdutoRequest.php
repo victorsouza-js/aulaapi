@@ -37,7 +37,7 @@ class StoreProdutoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nome' => 'required',
+            'nome_produto' => 'required',
             'preco' => 'required|numeric|min:1',
             'estoque' => 'required|numeric',
         ];

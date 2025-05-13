@@ -9,25 +9,19 @@ use Illuminate\Http\Response;
 
 class ProdutoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-    return Produto::all();
+        return Produto::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(StoreProdutoRequest $request)
     {
         $dadosValidados = $request->validated();
@@ -36,12 +30,10 @@ class ProdutoController extends Controller
         return response()->json([
             'message' => 'Criado com sucesso',
             'data' => $produto,
-        ],Response::HTTP_OK);
+        ], Response::HTTP_OK);
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(Produto $produto)
     {
         //
