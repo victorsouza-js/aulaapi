@@ -14,7 +14,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('nome_produto', 200);
             $table->decimal('preco', 10, 2);
-            $table->decimal('estoque', 10, 3);
+            $table->integer('estoque');
         });
     }
 
