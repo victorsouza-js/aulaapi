@@ -58,5 +58,9 @@ class ProdutoController extends Controller
     {
         $produto = Produto::findOrFail($id);
         $produto->delete();
+
+        return response()->json([
+            'message' => 'Apagado com sucesso',
+        ], Response::HTTP_OK);
     }
 }
