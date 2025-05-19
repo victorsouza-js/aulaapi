@@ -47,19 +47,16 @@ class ProdutoController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(UpdateProdutoRequest $request, Produto $produto)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Produto $produto)
+
+    public function destroy($id)
     {
-        //
+        $produto = Produto::findOrFail($id);
+        $produto->delete();
     }
 }
