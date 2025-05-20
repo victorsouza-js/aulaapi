@@ -48,9 +48,17 @@ class ProdutoController extends Controller
     }
 
 
-    public function update(UpdateProdutoRequest $request, Produto $produto)
+    public function update(UpdateProdutoRequest $request, $id, Produto $produto)
     {
-        //
+        $data = $request->all();
+
+        $produto = Produto::find($id);
+
+        if(!$produto){
+            return response()->json([
+            'message' => 'PRODUTO NÃO ENCONTRADO',
+        ], Response::HTTP_NOT_FOUND);
+        }
     }
 
 
